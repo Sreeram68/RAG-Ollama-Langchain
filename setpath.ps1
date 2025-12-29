@@ -1,8 +1,9 @@
-# PowerShell script to add Python and uv to user PATH
+uv --ve4# PowerShell script to add Python and uv to user PATH
 Write-Host "Setting up PATH for Python and uv..." -ForegroundColor Cyan
 
 $pythonPath = "C:\Users\SRETH\AppData\Local\Programs\Python\Python314"
 $uvPath = "C:\Users\SRETH\AppData\Local\Programs\Python\Python314\Scripts"
+$gitPath = "C:\Users\SRETH\AppData\Local\Programs\Git\bin"
 
 # Verify paths exist
 if (Test-Path $pythonPath) {
@@ -15,6 +16,12 @@ if (Test-Path $uvPath) {
     Write-Host "? Scripts directory found: $uvPath" -ForegroundColor Green
 } else {
     Write-Host "? Scripts directory not found: $uvPath" -ForegroundColor Red
+}
+
+if (Test-Path $gitPath) {
+    Write-Host "? Git directory found: $gitPath" -ForegroundColor Green
+} else {
+    Write-Host "? Git directory not found: $gitPath" -ForegroundColor Red
 }
 
 # Get current user PATH
@@ -36,6 +43,13 @@ if ($currentPathArray -notcontains $uvPath) {
     Write-Host "Adding Scripts (uv) to PATH..." -ForegroundColor Yellow
 } else {
     Write-Host "Scripts path already in PATH" -ForegroundColor Gray
+}
+
+if ($currentPathArray -notcontains $gitPath) {
+    $pathsToAdd += $gitPath
+    Write-Host "Adding Git to PATH..." -ForegroundColor Yellow
+} else {
+    Write-Host "Git path already in PATH" -ForegroundColor Gray
 }
 
 # Add paths if needed
