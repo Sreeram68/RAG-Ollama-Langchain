@@ -132,6 +132,50 @@ Answer:"""
     print(final_response.content)
     print(f"{'='*60}\n")
 
+# 4. INTERACTIVE QUERY LOOP
+def interactive_query():
+    """Run interactive query loop."""
+    print("\n" + "="*60)
+    print("INTERACTIVE QUERY MODE")
+    print("="*60)
+    print("Commands:")
+    print("  - Type your question to query the document")
+    print("  - Type 'quit' or 'exit' to stop")
+    print("  - Type 'help' for example questions")
+    print("="*60 + "\n")
+    
+    while True:
+        try:
+            user_input = input("Your question: ").strip()
+            
+            if not user_input:
+                continue
+            
+            # Check for exit commands
+            if user_input.lower() in ['quit', 'exit', 'q']:
+                print("\n✓ Exiting interactive mode. Goodbye!\n")
+                break
+            
+            # Show help
+            if user_input.lower() == 'help':
+                print("\nExample questions you can ask:")
+                print("  - What is the main topic of this document?")
+                print("  - What are the key principles discussed?")
+                print("  - Who is the author?")
+                print("  - Summarize the main points")
+                print("  - What are the actionable insights?\n")
+                continue
+            
+            # Process the query
+            query_rag(user_input)
+            
+        except KeyboardInterrupt:
+            print("\n\n✓ Interrupted. Exiting...\n")
+            break
+        except Exception as e:
+            print(f"\n✗ Error: {e}\n")
+            continue
+
 # --- EXECUTION ---
 if __name__ == "__main__":
     print("="*60)
@@ -159,9 +203,5 @@ if __name__ == "__main__":
     else:
         print(f"\n✓ Using existing database at {CHROMA_PATH}\n")
     
-    # Example queries
-    query_rag("What is the main topic of this document?")
-    
-    # Uncomment for more queries:
-    # query_rag("What are the key principles discussed?")
-    # query_rag("Who is the author?")
+    # Start interactive query mode
+    interactive_query()
