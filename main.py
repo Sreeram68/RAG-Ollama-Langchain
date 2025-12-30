@@ -5,7 +5,7 @@ import json
 try:
     # Use the correct Ollama API endpoint
     response = requests.post('http://localhost:11434/api/chat', json={
-        'model': 'llama3.2:3b',
+        'model': 'gemma3:12b',
         'messages': [
             {
                 'role': 'user',

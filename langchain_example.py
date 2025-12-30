@@ -5,7 +5,7 @@ from langchain_core.prompts import PromptTemplate
 try:
     # Initialize Ollama LLM
     llm = Ollama(
-        model="llama3.2:3b",
+        model="gemma3:12b",
         base_url="http://localhost:11434"
     )
     
