@@ -231,7 +231,7 @@ def main():
     PDF_FILES = [str(p) for p in Path(PDF_DIRECTORY).glob("*.pdf")]
     
     EMBEDDING_MODEL = "mxbai-embed-large:latest"
-    LLM_MODEL = "gemma2:2b"
+    LLM_MODEL = "gemma3:12b"
     CHUNK_SIZE = 1000
     CHUNK_OVERLAP = 100
     

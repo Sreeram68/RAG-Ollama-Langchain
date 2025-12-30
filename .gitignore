@@ -49,3 +49,6 @@ Thumbs.db
 *.tmp
 *.temp
 
+# RAG Database
+local_rag_db/
+

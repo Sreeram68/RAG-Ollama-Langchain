@@ -1,9 +1,10 @@
-uv --ve4# PowerShell script to add Python and uv to user PATH
+# PowerShell script to add Python and uv to user PATH
 Write-Host "Setting up PATH for Python and uv..." -ForegroundColor Cyan
 
 $pythonPath = "C:\Users\SRETH\AppData\Local\Programs\Python\Python314"
 $uvPath = "C:\Users\SRETH\AppData\Local\Programs\Python\Python314\Scripts"
 $gitPath = "C:\Users\SRETH\AppData\Local\Programs\Git\bin"
+$popplerPath = "C:\Users\SRETH\AppData\Local\Programs\poppler\poppler-25.12.0\Library\bin"
 
 # Verify paths exist
 if (Test-Path $pythonPath) {
@@ -22,6 +23,12 @@ if (Test-Path $gitPath) {
     Write-Host "? Git directory found: $gitPath" -ForegroundColor Green
 } else {
     Write-Host "? Git directory not found: $gitPath" -ForegroundColor Red
+}
+
+if (Test-Path $popplerPath) {
+    Write-Host "? Poppler directory found: $popplerPath" -ForegroundColor Green
+} else {
+    Write-Host "? Poppler directory not found: $popplerPath" -ForegroundColor Red
 }
 
 # Get current user PATH
@@ -50,6 +57,13 @@ if ($currentPathArray -notcontains $gitPath) {
     Write-Host "Adding Git to PATH..." -ForegroundColor Yellow
 } else {
     Write-Host "Git path already in PATH" -ForegroundColor Gray
+}
+
+if ($currentPathArray -notcontains $popplerPath) {
+    $pathsToAdd += $popplerPath
+    Write-Host "Adding Poppler to PATH..." -ForegroundColor Yellow
+} else {
+    Write-Host "Poppler path already in PATH" -ForegroundColor Gray
 }
 
 # Add paths if needed
