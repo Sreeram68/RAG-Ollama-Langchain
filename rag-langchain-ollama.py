@@ -219,15 +219,16 @@ def run_interactive_chat(rag_chain, loaded_files: List[str]):
 def main():
     """Main entry point for the RAG chat application."""
     # Configuration
-    PDF_FILES = [
-        "policy doc.pdf",  # Add your PDF files here
-        # "document2.pdf",
-        # "document3.pdf",
-    ]
+    # Option 1: Specify individual PDF files
+    # PDF_FILES = [
+    #     "policy doc.pdf",
+    #     "document2.pdf",
+    #     "document3.pdf",
+    # ]
     
-    # Alternative: Load all PDFs from a directory
-    # PDF_DIRECTORY = "documents"
-    # PDF_FILES = [str(p) for p in Path(PDF_DIRECTORY).glob("*.pdf")]
+    # Option 2: Load all PDFs from a directory
+    PDF_DIRECTORY = r"C:\python\projects\RAG-PDF-FILES"
+    PDF_FILES = [str(p) for p in Path(PDF_DIRECTORY).glob("*.pdf")]
     
     EMBEDDING_MODEL = "mxbai-embed-large:latest"
     LLM_MODEL = "gemma2:2b"
@@ -263,6 +264,7 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
 
 
